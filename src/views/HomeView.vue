@@ -1,15 +1,16 @@
 <template>
-  <hello-world />
+  <div>
+    <home-header />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "../components/HelloWorld";
+import HomeHeader from "@/components/HomeHeader.vue";
 
 export default {
   name: "HomeView",
-
   components: {
-    HelloWorld,
+    HomeHeader,
   },
 };
 </script>
