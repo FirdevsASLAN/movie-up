@@ -1,7 +1,12 @@
 <template>
-  <section>
-    <v-container>
-      <div>search result</div>
-    </v-container>
-  </section>
+  <nav-area routeName="Search Result" />
 </template>
+
+<script>
+import NavArea from "@/components/NavArea.vue";
+export default {
+  components: {
+    NavArea,
+  },
+};
+</script>

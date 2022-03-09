@@ -1,7 +1,12 @@
 <template>
-  <section>
-    <v-container>
-      <div>favorites</div>
-    </v-container>
-  </section>
+  <nav-area routeName="Favorites" />
 </template>
+
+<script>
+import NavArea from "@/components/NavArea.vue";
+export default {
+  components: {
+    NavArea,
+  },
+};
+</script>
