@@ -8,8 +8,8 @@
           <router-link class="text-decoration-none" :to="'/'">Home</router-link>
         </v-btn>
         <v-btn text>
-          <router-link class="text-decoration-none" :to="'/favorite'"
-            >Favorite</router-link
+          <router-link class="text-decoration-none" :to="'/favorites'"
+            >Favorites</router-link
           >
         </v-btn>
         <v-spacer />
