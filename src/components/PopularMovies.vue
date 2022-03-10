@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Card from "@/components/PopularMoviesCard.vue";
+import Card from "@/components/HorizontalCard.vue";
 
 export default {
   components: {
