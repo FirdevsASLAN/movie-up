@@ -5,10 +5,18 @@
         <img src="@/assets/MovieUpLogo.png" alt="" />
         <v-spacer />
         <v-btn text>
-          <router-link class="text-decoration-none" :to="'/'">Home</router-link>
+          <router-link
+            class="text-decoration-none"
+            :class="linkClass(activePath === '/')"
+            :to="'/'"
+            >Home</router-link
+          >
         </v-btn>
         <v-btn text>
-          <router-link class="text-decoration-none" :to="'/favorites'"
+          <router-link
+            class="text-decoration-none"
+            :class="linkClass(activePath === '/favorites')"
+            :to="'/favorites'"
             >Favorites</router-link
           >
         </v-btn>
@@ -32,15 +40,26 @@ export default {
   name: "App",
 
   data: () => ({
-    //
+    activePath: "",
   }),
+  updated() {
+    this.activePath = this.$route.path;
+  },
+  created() {
+    this.activePath = this.$route.path;
+  },
+  methods: {
+    linkClass(isActive) {
+      return isActive ? "amber--text accent-3" : "black--text";
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .container {
   @media (min-width: 1904px) {
-    max-width: 1200px !important;
+    max-width: 1400px !important;
   }
 }
 .navbar {
