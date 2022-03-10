@@ -37,10 +37,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.container {
+  @media (min-width: 1904px) {
+    max-width: 1200px !important;
+  }
+}
 .navbar {
   height: 128px !important;
 }
+
 .v-toolbar-content {
   height: 128px !important;
 }
