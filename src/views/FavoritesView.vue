@@ -6,17 +6,17 @@
         <span>Favorites</span>
       </h1>
     </v-container>
-    <search-container />
+    <movies-container />
   </div>
 </template>
 
 <script>
 import NavArea from "@/components/NavArea.vue";
-import SearchContainer from "@/components/SearchContainer.vue";
+import MoviesContainer from "@/components/MoviesContainer.vue";
 export default {
   components: {
     NavArea,
-    SearchContainer,
+    MoviesContainer,
   },
 };
 </script>

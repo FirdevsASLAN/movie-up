@@ -1,16 +1,12 @@
 <template>
   <section>
     <v-container class="search__container">
-      <movie-card />
-      <movie-card />
-
-      <movie-card />
-
-      <movie-card />
-
-      <movie-card />
-
-      <movie-card />
+      <card />
+      <card />
+      <card />
+      <card />
+      <card />
+      <card />
     </v-container>
     <v-container class="d-flex justify-center my-10">
       <v-pagination
@@ -19,17 +15,17 @@
         :total-visible="7"
         color="amber accent-3"
         dark
-      ></v-pagination>
+      />
     </v-container>
   </section>
 </template>
 
 <script>
-import MovieCard from "@/components/MovieCard.vue";
+import Card from "@/components/VerticalCard.vue";
 
 export default {
   components: {
-    MovieCard,
+    Card,
   },
   data() {
     return {

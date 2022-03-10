@@ -8,20 +8,20 @@
         <span class="amber--text accent-3"> Godfather</span>
       </h1>
     </v-container>
-    <search-container />
+    <movies-container />
   </div>
 </template>
 
 <script>
 import NavArea from "@/components/NavArea.vue";
 import SearchArea from "@/components/SearchArea.vue";
-import SearchContainer from "@/components/SearchContainer.vue";
+import MoviesContainer from "@/components/MoviesContainer.vue";
 
 export default {
   components: {
     NavArea,
     SearchArea,
-    SearchContainer,
+    MoviesContainer,
   },
 };
 </script>
