@@ -24,13 +24,16 @@
         <v-text-field
           outlined
           label="Search"
+          v-model="search"
+          ref="searchinput"
           append-icon="mdi-magnify"
+          @keyup.enter="searchMovie"
         ></v-text-field>
       </v-container>
     </v-app-bar>
 
     <v-main>
-      <router-view />
+      <router-view :key="$route.fullPath" />
     </v-main>
   </v-app>
 </template>
@@ -41,7 +44,9 @@ export default {
 
   data: () => ({
     activePath: "",
+    search: "",
   }),
+
   updated() {
     this.activePath = this.$route.path;
   },
@@ -52,8 +57,14 @@ export default {
     linkClass(isActive) {
       return isActive ? "amber--text accent-3" : "black--text";
     },
+    searchMovie() {
+      this.$router.push(`/search?s=${this.search}&page=1`);
+      this.search = "";
+      this.$refs.searchinput.blur();
+    },
   },
 };
+5;
 </script>
 
 <style lang="scss">

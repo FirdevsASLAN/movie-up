@@ -6,17 +6,20 @@
         outlined
         height="68px"
         class="search__select"
+        color="amber accent-3"
         :items="years"
       ></v-select>
       <v-select
         label="Type"
         outlined
+        color="amber accent-3"
         height="68px"
         class="search__select mx-5"
       ></v-select>
       <v-text-field
         outlined
         height="68px"
+        color="amber accent-3"
         label="Enter movie name here"
         append-icon="mdi-magnify"
       ></v-text-field>

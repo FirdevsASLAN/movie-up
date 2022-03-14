@@ -1,17 +1,12 @@
 <template>
   <section>
     <v-container class="search__container">
-      <card />
-      <card />
-      <card />
-      <card />
-      <card />
-      <card />
+      <card v-for="movie in movies" :key="movie.Title" :movie="movie" />
     </v-container>
     <v-container class="d-flex justify-center my-10">
       <v-pagination
         v-model="page"
-        :length="15"
+        :length="pageNum"
         :total-visible="7"
         color="amber accent-3"
         dark
@@ -27,10 +22,25 @@ export default {
   components: {
     Card,
   },
+  props: {
+    movies: {
+      type: Array,
+      default: () => [],
+    },
+    totalResults: {
+      type: Number,
+      default: 0,
+    },
+  },
   data() {
     return {
       page: 1,
     };
+  },
+  computed: {
+    pageNum() {
+      return Math.ceil(this.totalResults / 10);
+    },
   },
 };
 </script>

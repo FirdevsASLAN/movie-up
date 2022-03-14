@@ -7,17 +7,17 @@
       <v-icon class="card__icon rounded-circle amber--text accent-3 white pa-3">
         mdi-heart
       </v-icon>
-      <v-img src="@/assets/moviegodfather.png" width="100%" />
+      <v-img :src="movie.Poster" width="100%" />
     </div>
     <div class="d-flex align-center my-9">
       <img src="@/assets/IMDB-icon.png" height="26px" width="49px" />
       <span class="text-h6 ml-5">8.8</span>
     </div>
     <v-card-text class="text-h6 amber--text accent-3 mb-1 pa-0">
-      2019
+      {{ movie.Year }}
     </v-card-text>
     <v-card-title class="text-h5 font-weight-bold mb-5 pa-0">
-      Be Your Self & Never Su..
+      {{ movie.Title }}
     </v-card-title>
     <v-card-text class="body-1 pa-0">
       The aging patriarch of an organized crime dynasty transfers control of his
@@ -25,6 +25,16 @@
     </v-card-text>
   </v-card>
 </template>
+<script>
+export default {
+  props: {
+    movie: {
+      type: Object,
+      default: () => {},
+    },
+  },
+};
+</script>
 <style lang="scss" scoped>
 .card {
   box-shadow: none !important;
