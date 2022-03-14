@@ -40,6 +40,7 @@ export default {
   box-shadow: none !important;
   &__image {
     position: relative;
+    min-height: 550px !important;
   }
   &__label {
     position: absolute;

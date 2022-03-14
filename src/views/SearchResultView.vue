@@ -27,7 +27,6 @@ export default {
   data() {
     return {
       search: "",
-      page: 0,
       movies: [],
       totalResults: 0,
     };
@@ -35,7 +34,7 @@ export default {
   created() {
     axios
       .get(
-        `https://omdbapi.com/?s=${this.$route.query.s}&apikey=2ccf4c7c&page=2`
+        `https://omdbapi.com/?s=${this.$route.query.s}&apikey=2ccf4c7c&page=${this.$route.query.page}`
       )
       .then((res) => {
         this.movies = res.data.Search;

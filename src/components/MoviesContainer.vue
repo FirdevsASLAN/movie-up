@@ -42,6 +42,17 @@ export default {
       return Math.ceil(this.totalResults / 10);
     },
   },
+  created() {
+    this.page = parseInt(this.$route.query.page);
+  },
+  watch: {
+    page() {
+      this.$router.push({
+        path: this.$route.path,
+        query: { s: this.$route.query.s, page: this.page },
+      });
+    },
+  },
 };
 </script>
 
