@@ -1,9 +1,12 @@
 <template>
   <section>
-    <v-container class="search__container">
+    <v-container class="search__container" v-if="movies.length > 0">
       <card v-for="movie in movies" :key="movie.Title" :movie="movie" />
     </v-container>
-    <v-container class="d-flex justify-center my-10">
+    <v-container class="search__container" v-else>
+      <h2>No movies found! Please, try again...</h2>
+    </v-container>
+    <v-container class="d-flex justify-center my-10" v-if="movies.length > 0">
       <v-pagination
         v-model="page"
         :length="pageNum"
@@ -49,7 +52,11 @@ export default {
     page() {
       this.$router.push({
         path: this.$route.path,
-        query: { s: this.$route.query.s, page: this.page },
+        query: {
+          s: this.$route.query.s,
+          page: this.page,
+          type: this.$route.query.type,
+        },
       });
     },
   },

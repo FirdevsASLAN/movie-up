@@ -11,13 +11,13 @@
     </div>
     <div class="d-flex align-center my-9">
       <img src="@/assets/IMDB-icon.png" height="26px" width="49px" />
-      <span class="text-h6 ml-5">8.8</span>
+      <span class="text-h6 ml-5">{{ movie.imdb }}</span>
     </div>
     <v-card-text class="text-h6 amber--text accent-3 mb-1 pa-0">
       {{ movie.Year }}
     </v-card-text>
     <v-card-title class="text-h5 font-weight-bold mb-5 pa-0">
-      {{ movie.Title }}
+      {{ specialName }}
     </v-card-title>
     <v-card-text class="body-1 pa-0">
       The aging patriarch of an organized crime dynasty transfers control of his
@@ -31,6 +31,17 @@ export default {
     movie: {
       type: Object,
       default: () => {},
+    },
+  },
+  computed: {
+    specialName() {
+      let movieType = this.movie.Type;
+      let movieName = this.movie.Title;
+      movieType = movieType[0].toUpperCase() + movieType.slice(1);
+      if (movieName.length > 18) {
+        movieName = movieName.slice(0, 18) + "...";
+      }
+      return `${movieType} - ${movieName}`;
     },
   },
 };
