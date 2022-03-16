@@ -1,6 +1,6 @@
 <template>
   <v-card class="card mx-auto" max-width="383px">
-    <div class="card__image">
+    <div class="card__image pointer" @click="goMovie">
       <div class="card__label rounded-lg amber accent-3 px-6 py-4">
         Biography
       </div>
@@ -44,6 +44,11 @@ export default {
       return `${movieType} - ${movieName}`;
     },
   },
+  methods: {
+    goMovie() {
+      this.$router.push(`details/${this.movie.imdbID}`);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -51,7 +56,8 @@ export default {
   box-shadow: none !important;
   &__image {
     position: relative;
-    min-height: 550px !important;
+    height: 550px !important;
+    overflow: hidden;
   }
   &__label {
     position: absolute;
@@ -65,5 +71,8 @@ export default {
     right: 15px;
     z-index: 3;
   }
+}
+.pointer {
+  cursor: pointer;
 }
 </style>
