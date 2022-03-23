@@ -1,11 +1,22 @@
 <template>
   <v-card class="card mx-auto" max-width="383px">
-    <div class="card__image pointer" @click="goMovie">
+    <div class="card__image">
       <div class="card__label rounded-lg amber accent-3 px-6 py-4">
         Biography
       </div>
-      <v-icon class="card__icon rounded-circle amber--text accent-3 white pa-3">
+      <v-icon
+        v-if="favorites.find((fav) => fav.imdbID === movie.imdbID)"
+        @click="removeFavorite(movie)"
+        class="card__icon rounded-circle amber--text accent-3 white pa-3"
+      >
         mdi-heart
+      </v-icon>
+      <v-icon
+        v-else
+        @click="addFavorite(movie)"
+        class="card__icon rounded-circle amber--text accent-3 white pa-3"
+      >
+        mdi-cards-heart-outline
       </v-icon>
       <v-img :src="movie.Poster" width="100%" />
     </div>
@@ -16,7 +27,10 @@
     <v-card-text class="text-h6 amber--text accent-3 mb-1 pa-0">
       {{ movie.Year }}
     </v-card-text>
-    <v-card-title class="text-h5 font-weight-bold mb-5 pa-0">
+    <v-card-title
+      @click="goMovie"
+      class="pointer text-h5 font-weight-bold mb-5 pa-0"
+    >
       {{ specialName }}
     </v-card-title>
     <v-card-text class="body-1 pa-0">
@@ -26,6 +40,8 @@
   </v-card>
 </template>
 <script>
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   props: {
     movie: {
@@ -33,7 +49,9 @@ export default {
       default: () => {},
     },
   },
+
   computed: {
+    ...mapGetters(["favorites"]),
     specialName() {
       let movieType = this.movie.Type;
       let movieName = this.movie.Title;
@@ -45,6 +63,7 @@ export default {
     },
   },
   methods: {
+    ...mapMutations(["addFavorite", "removeFavorite"]),
     goMovie() {
       this.$router.push(`details/${this.movie.imdbID}`);
     },

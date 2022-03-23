@@ -8,9 +8,28 @@
           <span class="text-h6 ml-5">{{ movie.imdbRating }}</span>
         </div>
         <v-card-actions>
-          <v-btn color="amber accent-3" dark class="text-capitalize">
-            <v-icon>mdi-heart</v-icon>
+          <v-btn
+            color="amber accent-3"
+            dark
+            class="text-capitalize"
+            @click="removeFavorite(movie)"
+            v-if="favorites.find((fav) => fav.imdbID === movie.imdbID)"
+          >
+            <v-icon> mdi-cards-heart-outline </v-icon>
             <span class="mr-2"> Add to favorites</span>
+          </v-btn>
+          <v-btn
+            color="amber accent-3"
+            dark
+            class="text-capitalize"
+            v-else
+            @click="addFavorite(movie)"
+          >
+            <v-icon>mdi-heart</v-icon>
+            <span class="mr-2"> Remove from favorites</span>
+          </v-btn>
+          <v-btn color="amber accent-3" class="text-capitalize" text>
+            View Details
           </v-btn>
         </v-card-actions>
       </div>
@@ -38,6 +57,7 @@
   </v-card>
 </template>
 <script>
+import { mapGetters, mapMutations } from "vuex";
 export default {
   props: {
     movie: {
@@ -46,8 +66,16 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(["favorites"]),
+
     genres() {
       return this.movie.Genre.split(", ");
+    },
+  },
+  methods: {
+    ...mapMutations(["addFavorite", "removeFavorite"]),
+    goMovie() {
+      this.$router.push(`details/${this.movie.imdbID}`);
     },
   },
   // updated() {

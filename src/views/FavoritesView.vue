@@ -13,7 +13,7 @@
       <v-text-field v-model="favInput" label="fav" outlined />
       <v-btn @click="addFavorites">Add Favorite</v-btn> -->
     </v-container>
-    <movies-container :movies="favorites" />
+    <movies-container :movies="favorites" :totalResults="favorites.length" />
   </div>
 </template>
 
